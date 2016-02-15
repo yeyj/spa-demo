@@ -102,6 +102,18 @@
 }
 
 
+.bfui_mask_transition {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    -webkit-transition: background .3s;
+    transition: background .3s;
+}
 .bfui_actionsheet_rb {
     position: fixed;
     left: 0;
@@ -116,11 +128,10 @@
     -webkit-transition: -webkit-transform .3s;
     transition: transform .3s;
 }
-.show .weui_mask_transition {
-    display: block;
+.bfui_fade_toggle {
     background: rgba(0, 0, 0, 0.6);
 }
-.show .bfui_actionsheet_rb {
+.bfui_actionsheet_toggle {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }

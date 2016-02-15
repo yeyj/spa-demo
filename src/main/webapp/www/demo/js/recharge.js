@@ -47,7 +47,21 @@ define(function (require, exports, module) {
         input.onButtonActive(button);
         //下一步
         $btn.tap(function () {
-            app.goto('recharge_step2', safecard);
+            var mask = $('#mask');
+            var actionsheet = $('#actionsheet');
+            mask.show().one('tap',function(){
+                actionsheet.on('transitionend', function () {
+                    mask.hide();
+                }).on('webkitTransitionEnd', function () {
+                    mask.hide();
+                });
+                mask.removeClass('bfui_fade_toggle');
+                actionsheet.removeClass('bfui_actionsheet_toggle');
+            });
+            setTimeout(function(){mask.addClass('bfui_fade_toggle')},1);
+            actionsheet.addClass('bfui_actionsheet_toggle').off('transitionend webkitTransitionEnd');
+
+            //app.goto('recharge_step2', safecard);
         });
         return this;
     };
