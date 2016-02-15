@@ -5,25 +5,14 @@ console.log('section1:load');
 define(function (require, exports, module) {
     console.log('section1:define');
     require('zepto');
-    var tpl = require('../html/section1.html');
+    var tpl = require('../html/recharge_step2.html');
     var template = require('art-template');
     var input = require('input');
     var consts = require('consts');
     var template_render = template.compile(tpl);
     var init = function (data) {//初始化，生成html，绑定事件
         console.log('section1:init');
-        var safecard = {
-            "safeCard": {
-                "id": "101",
-                "payId": "3003",
-                "bankName": "平安银行",
-                "tailNumber": "1234",
-                "quota": "5,000",
-                "quota_daily": "500,000"
-            }, "quota_acc": "1,000", "authflg": 1
-        };
-        _quota = safecard.quota_acc && Number((''+safecard.quota_acc).replace(/,/,""));
-        var html = template_render(safecard || {});
+        var html = template_render(data || {});
         var $html = $(html);
         this.$html = $html;
         var $money = $html.find('#orderMoney');

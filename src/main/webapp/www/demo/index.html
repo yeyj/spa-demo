@@ -6,30 +6,30 @@
     <title>Title</title>
     <link rel="stylesheet" href="css/weui.css"/>
     <link rel="stylesheet" href="/www/common/baofoo/input.css"/>
-    <link rel="stylesheet" href="css/sample.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/demo.css"/>
     <link rel="stylesheet" href="css/baofoo217.css"/>
 </head>
 <body>
 <div class="container">
 
 </div>
-<script src="/www/node_modules/seajs/dist/sea.js"></script>
-<script src="/www/node_modules/seajs/dist/seajs-text.js"></script>
-<script src="/www/node_modules/seajs/dist/seajs-css.js"></script>
+<script src="/www/common/seajs/sea.js"></script>
+<script src="/www/common/seajs/seajs-text.js"></script>
+<!--<script src="/www/common/seajs/seajs-css.js"></script>-->
 <script>
     seajs.config({
-        base: "/www/sample/",
+        base: "/www/demo/",
         alias: {
             "zepto": "/www/common/zepto/zepto.min",
             "art-template": "/www/common/art-template/template",
-            "app": "test/app",
             "input": "/www/common/baofoo/input",
-            "consts": "/www/sample/js/consts",
-            "main": "/www/sample/js/main",
+            "consts": "/www/demo/js/consts",
+            "app": "/www/demo/js/main",
         }
     });
     var app;
-    seajs.use('main',function(main){
+    seajs.use('app',function(main){
         app = main;
         main.run();
     });

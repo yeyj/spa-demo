@@ -1,0 +1,63 @@
+<div id="" class="page" data-transition="slideIn">
+    <div class="bfui_cells">
+        <div class="bfui_cell bfui_cell_access">
+            <div class="weui_cell_hd">
+                <img src="/www/demo/img/bank_logo/{{safeCard.payId}}.png" class="bfui_bank_logo"/>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="bfui_bank_name">{{safeCard.bankName}}</div>
+                <div class="bfui_card_desc">储蓄卡 尾号{{safeCard.tailNumber}}</div>
+            </div>
+            <div class="bfui_cell_ft">
+            </div>
+        </div>
+    </div>
+    <div class="bfui_cells_tips">
+        <span>单笔 <span class="corange js_quota">{{safeCard.quota}}</span> 元，单日 <span class="corange js_quota_daily">{{safeCard.quota_daily}}</span> 元</span>
+    </div>
+
+    <div class="bfui_cells weui_cells_form">
+        <div class="bfui_cell">
+            <div class="weui_cell_hd">
+                <label for="orderMoney" class="weui_label" style="width:5em;">充值金额</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="orderMoney" class="weui_input" type="text" placeholder="请输入充值金额" autocomplete="off"/>
+            </div>
+            <div class="weui_cell_ft">
+                <span class="innertip corange js-input-tip" style="display:none;"></span>
+            </div>
+        </div>
+    </div>
+    <div class="bfui_cells_tips">
+        <span>当前的账户余额（元）：0.00</span>
+    </div>
+    <div class="bfui_cells_tips">
+        <span>充值后账户余额（元）：<span class="corange">0.00</span></span>
+    </div>
+
+    <a id="safeCardRecharge" class="bfbtn js-bfbtn disabled">下一步</a>
+
+    <div class="bfui_extra_area">
+        <a href="">常见问题</a>
+    </div>
+
+    <div class="actionSheet_wrap">
+        <div class="weui_mask_transition"></div>
+        <div class="bfui_actionsheet_rb">
+            <div class="bfitem pswbg" data-bfcomp="password_box">
+                <input id="bank_pay_password" class="js-pwstext" type="password" maxlength="6" autocomplete="off"
+                       readonly="">
+                <ul class="passwordbg">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="keyboard_show" id="vkey"><table class="keytable" width="100%" height="100%" border="0" cellspacing="1"><tbody><tr><td class="js-softkey">1</td><td class="js-softkey">2</td><td class="js-softkey">3</td></tr><tr><td class="js-softkey">4</td><td class="js-softkey">5</td><td class="js-softkey">6</td></tr><tr><td class="js-softkey">7</td><td class="js-softkey">8</td><td class="js-softkey">9</td></tr><tr><td class="js-keyboard-special js-softkey"></td><td class="js-softkey">0</td><td class="delicon js-softkey-backspace"></td></tr></tbody></table></div>
+        </div>
+    </div>
+</div>

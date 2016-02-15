@@ -78,3 +78,11 @@ body, html {
     -webkit-animation: b .2s forwards;
     animation: b .2s forwards
 }
+
+.half_page {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
