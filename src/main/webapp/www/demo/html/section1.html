@@ -1,0 +1,31 @@
+<div id="section1" class="page" data-transition="slideIn">
+    <div class="bankcardbar bottomline js-safeCard" data-selected="bfactive">
+        <div class="banklogo js-header" style="background-image: url(img/bank_logo/{{safeCard.payId}}.png)"></div>
+        <div class="cardInfo js-info">
+            <strong>{{safeCard.bankName}}</strong>
+
+            <p>储蓄卡 尾号{{safeCard.tailNumber}}</p>
+
+            <div class="safecard"></div>
+            <div class="drawcard"></div>
+        </div>
+    </div>
+    <div class="weui_cells_title">
+        <span>单笔 <span class="corange js_quota">{{safeCard.quota}}</span> 元，单日 <span
+                class="corange js_quota_daily">{{safeCard.quota_daily}}</span> 元</span>
+    </div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <label for="orderMoney" class="weui_label" style="width:5em;">充值金额</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="orderMoney" class="weui_input" type="text" placeholder="请输入充值金额" autocomplete="off"/>
+            </div>
+            <div class="weui_cell_ft">
+                <span class="innertip corange js-input-tip" style="display:none;"></span>
+            </div>
+        </div>
+    </div>
+    <a id="safeCardRecharge" class="bfbtn js-bfbtn disabled">下一步</a>
+</div>
