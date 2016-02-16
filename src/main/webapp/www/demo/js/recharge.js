@@ -31,6 +31,7 @@ define(function (require, exports, module) {
         var $tip = $html.find('.js-input-tip');
         var $btn = $html.find('.js-bfbtn');
         var $password = $html.find('#pay_password');
+        var $vcode = $html.find("#vcode");
         var $keyboard = $html.find('#softkeyboard');
         // 金额输入
         var moneyfn = function () {
@@ -66,30 +67,54 @@ define(function (require, exports, module) {
             }, 1);
             actionsheet.addClass('bfui_actionsheet_toggle').off('transitionend webkitTransitionEnd');
         });
+        //软键盘
+        var softkeyboard = (function () {
+            var $el;
+            $keyboard.find(".bfui_keyboard_key").not('.bfui_keyboard_key_backspace').each(function () {
+                $(this).tap(function () {
+                    $el.val($el.val() + $(this).find('span').html()).trigger("input");
+                });
+            });
+            $keyboard.find(".bfui_keyboard_key_backspace").tap(function () {
+                var val = $el.val();
+                $el.val(val.substring(0, val.length - 1)).trigger("input");
+            });
+            return {
+                bind: function (_$el) {
+                    console.log('softkeyboard:bind');
+                    $el = _$el;
+                }
+            };
+        })();
         //支付密码
         //var param = {el: $password, group: "", type: "passwordBox"};
         //input.onComponentInput(param);
         //input.onPasswordBoxInput($password);
-        input.onBoxInput({$el:$password,length:20,mask:false});
-        //软键盘
-        $keyboard.find(".bfui_keyboard_key").not('.bfui_keyboard_key_backspace').each(function () {
+        //input.onBoxInput({$el:$password,length:6,mask:true});
+        input.onBoxInput({$el:$password});
+        input.onBoxInput({$el:$vcode});
+        $password.on('input:success', function () {
+            softkeyboard.bind($vcode);
+        });
+        softkeyboard.bind($password);
+        /*$keyboard.find(".bfui_keyboard_key").not('.bfui_keyboard_key_backspace').each(function () {
             $(this).tap(function () {
-                if ($password[0].nodeName == "INPUT") {
+                //if ($password[0].nodeName == "INPUT") {
                     $password.val($password.val() + $(this).find('span').html()).trigger("input");
-                } else {
-                    $password.html($password.html() + $(this).find('span').html());
-                }
+                //} else {
+                //    $password.html($password.html() + $(this).find('span').html());
+                //}
             });
         });
         $keyboard.find(".bfui_keyboard_key_backspace").tap(function () {
-            if ($password[0].nodeName == "INPUT") {
+            //if ($password[0].nodeName == "INPUT") {
                 var val = $password.val();
                 $password.val(val.substring(0, val.length - 1)).trigger("input");
-            } else {
-                var val = $password.html();
-                $password.html(val.substring(0, val.length - 1));
-            }
-        });
+            //} else {
+            //    var val = $password.html();
+            //    $password.html(val.substring(0, val.length - 1));
+            //}
+        });*/
 
         return this;
     };

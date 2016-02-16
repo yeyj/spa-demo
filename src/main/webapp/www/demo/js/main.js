@@ -14,7 +14,7 @@ define(function (require, exports, module) {
         if (!sectionId)return;
         //加载css
         //seajs.use('css/' + sectionId + '.css');
-        seajs.use('js/' + sectionId + '.js?v='+new Date().getTime(), function (page) {
+        seajs.use('js/' + sectionId + '.js?v='/*+new Date().getTime()*/, function (page) {
             page.init(data);//初始化，生成html，绑定事件
             //page.beforeshow && page.beforeshow(data);
             //page.show && page.show();

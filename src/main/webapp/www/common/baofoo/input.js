@@ -339,6 +339,7 @@
             $.extend(_opt,options);
             var $el = _opt.$el, length = _opt.length, mask = _opt.mask;
             if (!$el)return;
+            $el.css({display:'none'});
             $el.on("input", function () {
                 console.debug("onPasswordBoxInput:" + event.type);
                 var val = $(this).val();
@@ -368,6 +369,9 @@
                     }
                 });
                 $(this).trigger("input:step2");
+                if (cnt == length) {
+                    $(this).trigger("input:success");
+                }
             });//.after('<ul class="bfui_input_box"><li></li><li></li><li></li><li></li><li></li><li></li></ul>');
             var $box = $('<ul class="bfui_input_box"></ul>');
             for(var i=0;i<length;i++){
