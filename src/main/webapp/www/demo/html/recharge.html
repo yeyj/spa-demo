@@ -15,7 +15,6 @@
     <div class="bfui_cells_tips">
         <span>单笔 <span class="corange js_quota">{{safeCard.quota}}</span> 元，单日 <span class="corange js_quota_daily">{{safeCard.quota_daily}}</span> 元</span>
     </div>
-
     <div class="bfui_cells weui_cells_form">
         <div class="bfui_cell">
             <div class="weui_cell_hd">
@@ -41,23 +40,53 @@
     <div class="bfui_extra_area">
         <a href="">常见问题</a>
     </div>
+</div>
 
-    <div class="actionSheet_wrap">
-        <div class="bfui_mask_transition" id="mask"></div>
-        <div class="bfui_actionsheet_rb" id="actionsheet">
-            <div class="bfitem pswbg" data-bfcomp="password_box">
-                <input id="bank_pay_password" class="js-pwstext" type="password" maxlength="6" autocomplete="off"
-                       readonly="">
-                <ul class="passwordbg">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+<div class="actionSheet_wrap">
+    <div class="bfui_mask_transition" id="mask"></div>
+    <div class="bfui_actionsheet_rb" id="actionsheet">
+        <div class="bfui_pay_password_title">
+
+        </div>
+        <div class="bfui_password_ctx">
+            <div class="bfui_pay_password" data-bfcomp="password_box">
+                <input id="pay_password" class="bfui_pay_password_input" type="password" maxlength="6"
+                       autocomplete="off" readonly="">
             </div>
-            <div class="keyboard_show" id="vkey"><table class="keytable" width="100%" height="100%" border="0" cellspacing="1"><tbody><tr><td class="js-softkey">1</td><td class="js-softkey">2</td><td class="js-softkey">3</td></tr><tr><td class="js-softkey">4</td><td class="js-softkey">5</td><td class="js-softkey">6</td></tr><tr><td class="js-softkey">7</td><td class="js-softkey">8</td><td class="js-softkey">9</td></tr><tr><td class="js-keyboard-special js-softkey"></td><td class="js-softkey">0</td><td class="delicon js-softkey-backspace"></td></tr></tbody></table></div>
+            <div class="bfui_forget_password"><a>忘记密码？</a></div>
+        </div>
+        <div class="bfui_vcode_ctx">
+            <div class="weui_cell weui_vcode">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" placeholder="请输入验证码">
+                    <ul class="bfui_input_box"><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+                </div>
+                <div class="weui_cell_ft">
+                    <div>获取</div>
+                </div>
+            </div>
+        </div>
+        <div class="bfui_keyboard" id="softkeyboard">
+            <div class="bfui_keyboard_row">
+                <div class="bfui_keyboard_key"><span>1</span></div>
+                <div class="bfui_keyboard_key"><span>2</span></div>
+                <div class="bfui_keyboard_key"><span>3</span></div>
+            </div>
+            <div class="bfui_keyboard_row">
+                <div class="bfui_keyboard_key"><span>4</span></div>
+                <div class="bfui_keyboard_key"><span>5</span></div>
+                <div class="bfui_keyboard_key"><span>6</span></div>
+            </div>
+            <div class="bfui_keyboard_row">
+                <div class="bfui_keyboard_key"><span>7</span></div>
+                <div class="bfui_keyboard_key"><span>8</span></div>
+                <div class="bfui_keyboard_key"><span>9</span></div>
+            </div>
+            <div class="bfui_keyboard_row">
+                <div class="bfui_keyboard_key"><span></span></div>
+                <div class="bfui_keyboard_key"><span>0</span></div>
+                <div class="bfui_keyboard_key bfui_keyboard_key_backspace"></div>
+            </div>
         </div>
     </div>
 </div>

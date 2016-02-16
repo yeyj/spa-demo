@@ -324,7 +324,7 @@
                 } else {
                     $(this).addClass("js-val");
                 }
-                $(".passwordbg li").each(function (i) {
+                $(this).next().find('li').each(function (i) {
                     if (i < cnt) {
                         $(this).addClass("dot");
                     } else {
@@ -332,8 +332,49 @@
                     }
                 });
                 $(this).trigger("input:step2");
-            }).after('<ul class="passwordbg"><li></li><li></li><li></li><li></li><li></li><li></li></ul>');
+            }).after('<ul class="bfui_input_box passwordbg1"><li></li><li></li><li></li><li></li><li></li><li></li></ul>');
         };
+        Input.onBoxInput = function (options) {
+            var _opt = {length:6,mask:true};
+            $.extend(_opt,options);
+            var $el = _opt.$el, length = _opt.length, mask = _opt.mask;
+            if (!$el)return;
+            $el.on("input", function () {
+                console.debug("onPasswordBoxInput:" + event.type);
+                var val = $(this).val();
+                var cnt = val.length;
+                if (val == "") {
+                    $(this).val("");
+                }
+                if (cnt > length) {
+                    $(this).val(val.substring(0, length));
+                    val = $(this).val();
+                    cnt = val.length;
+                }
+                if (val == '' || cnt != length) {
+                    $(this).removeClass("js-val");
+                } else {
+                    $(this).addClass("js-val");
+                }
+                $(this).next().find('li').each(function (i) {
+                    if (mask) {
+                        if (i < cnt) {
+                            $(this).addClass("dot");
+                        } else {
+                            $(this).removeClass("dot");
+                        }
+                    } else {
+                        $(this).html('<span>'+val.substring(i,i+1)+'</span>');
+                    }
+                });
+                $(this).trigger("input:step2");
+            });//.after('<ul class="bfui_input_box"><li></li><li></li><li></li><li></li><li></li><li></li></ul>');
+            var $box = $('<ul class="bfui_input_box"></ul>');
+            for(var i=0;i<length;i++){
+                $box.append('<li></li>');
+            }
+            $el.after($box);
+        };;
         var INPUT_TYPE_FN = {
             'money': Input.onMoneyInput,
             'authCode': Input.onAuthCodeInput,
@@ -414,7 +455,7 @@
             if (!el)return;
 
             _addInput(el, group);
-            if (needClear) {
+            if (needClear&&type!='passwordBox') {
                 if(!el.parent().hasClass("wrap_input")){
                     el.wrap('<div class="wrap_input"></div>');
                 }

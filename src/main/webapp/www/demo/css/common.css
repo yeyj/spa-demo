@@ -6,7 +6,7 @@
     font-size: 12px;
 }
 .bfui_cells {
-    margin-top: 1.17647059em;
+    /*margin-top: 1.17647059em;*/
     background-color: #FFFFFF;
     line-height: 1.41176471;
     font-size: 15px;
@@ -79,13 +79,19 @@
     margin-bottom: 15px;
     font-size: 14px;
     color: #888;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
-
+.bfui_extra_area a {
+    color: #61749B;
+}
+@media screen and (min-height: 438px) {
+    .bfui_extra_area {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+}
 .bfui_bank_logo {
     width: 50px;
     height: 50px;
@@ -110,9 +116,9 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0);
-    -webkit-transition: background .3s;
-    transition: background .3s;
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
 }
 .bfui_actionsheet_rb {
     position: fixed;
@@ -124,14 +130,167 @@
     backface-visibility: hidden;
     z-index: 2;
     width: 100%;
-    background-color: #EFEFF4;
+    /*background-color: #EFEFF4;*/
+    background-color: #fff;
     -webkit-transition: -webkit-transform .3s;
     transition: transform .3s;
 }
 .bfui_fade_toggle {
-    background: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 .bfui_actionsheet_toggle {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
+}
+
+.bfui_keyboard_row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.bfui_keyboard_key {
+    position: relative;
+    -webkit-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    height: 40px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.bfui_keyboard_key:active {
+    background-color: #EEEEEE;
+}
+.bfui_keyboard_key:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #D7D7D7;
+    color: #D7D7D7;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.bfui_keyboard_key:after {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid #D7D7D7;
+    color: #D7D7D7;
+    -webkit-transform-origin: 2px 0;
+    transform-origin: 2px 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+.bfui_keyboard_key>span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.bfui_pay_password {
+    margin: 20px 20px 10px;
+}
+.bfui_pay_password_input {
+    position: absolute;
+    left: -20px;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    color: transparent;
+    letter-spacing: -20px;
+    z-index: 10;
+}
+.bfui_input_box {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.bfui_input_box:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid #aaa;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    border-radius: 10px;
+}
+.bfui_input_box>li {
+    position: relative;
+    height: 40px;
+    -webkit-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.bfui_input_box>li:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-right: 1px solid #D7D7D7;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+.bfui_input_box>li:last-child:after {
+    display: none;
+}
+.bfui_input_box>li>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.bfui_input_box li.dot::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.bfui_forget_password {
+    margin: 10px 10px 20px;
+    text-align: right;
+    color: #225fba;
+    font-size: 14px;
+}
+.bfui_forget_password a {
+    color: #225fba;
 }
