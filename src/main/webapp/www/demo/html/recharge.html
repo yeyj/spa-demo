@@ -5,15 +5,16 @@
                 <img src="/www/demo/img/bank_logo/{{safeCard.payId}}.png" class="bfui_bank_logo"/>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <div class="bfui_bank_name">{{safeCard.bankName}}</div>
-                <div class="bfui_card_desc">储蓄卡 尾号{{safeCard.tailNumber}}</div>
-            </div>
-            <div class="bfui_cell_ft">
+                <div class="bfui_bank_name">{{safeCard.bankName}} 尾号{{safeCard.tailNumber}}</div>
+                <div class="bfui_card_desc"><span>单笔 <span class="corange js_quota">{{safeCard.quota}}</span> 元，单日 <span class="corange js_quota_daily">{{safeCard.quota_daily}}</span> 元</span></div>
             </div>
         </div>
-    </div>
+    </div><!--
     <div class="bfui_cells_tips">
         <span>单笔 <span class="corange js_quota">{{safeCard.quota}}</span> 元，单日 <span class="corange js_quota_daily">{{safeCard.quota_daily}}</span> 元</span>
+    </div>-->
+    <div class="bfui_cells_tips">
+        <span>当前的账户余额（元）：0.00</span>
     </div>
     <div class="bfui_cells weui_cells_form">
         <div class="bfui_cell">
@@ -24,12 +25,9 @@
                 <input id="orderMoney" class="weui_input" type="text" placeholder="请输入充值金额" autocomplete="off"/>
             </div>
             <div class="weui_cell_ft">
-                <span class="innertip corange js-input-tip" style="display:none;"></span>
+                <span class="innertip corange js-input-tip" style="display:none;"></span><span>元</span>
             </div>
         </div>
-    </div>
-    <div class="bfui_cells_tips">
-        <span>当前的账户余额（元）：0.00</span>
     </div>
     <div class="bfui_cells_tips">
         <span>充值后账户余额（元）：<span class="corange">0.00</span></span>
@@ -45,23 +43,26 @@
 <div class="actionSheet_wrap">
     <div class="bfui_mask_transition" id="mask"></div>
     <div class="bfui_actionsheet_rb" id="actionsheet">
-        <div class="bfui_pay_password_title">
-
+        <div class="bfui_actionsheet_title">
+            <div class="bfui_btn_back"></div>
+            <div class="bfui_actionsheet_title_text">输入支付密码</div>
         </div>
-        <div class="bfui_password_ctx">
-            <div class="bfui_pay_password" data-bfcomp="password_box">
-                <input id="pay_password" class="bfui_pay_password_input1" type="password" maxlength="6"
-                       autocomplete="off" readonly="">
-            </div>
-            <div class="bfui_forget_password"><a>忘记密码？</a></div>
-        </div>
-        <div class="bfui_vcode_ctx">
-            <div class="weui_cell weui_vcode">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input id="vcode" class="" type="number" placeholder="">
+        <div class="bfui_authentication bfui_step1">
+            <div class="bfui_password_ctx">
+                <div class="bfui_pay_password" data-bfcomp="password_box">
+                    <input id="pay_password" class="bfui_pay_password_input1" type="password" maxlength="6"
+                           autocomplete="off" readonly="">
                 </div>
-                <div class="weui_cell_ft">
-                    <div>获取</div>
+                <div class="bfui_forget_password"><a>忘记密码？</a></div>
+            </div>
+            <div class="bfui_vcode_ctx">
+                <div class="weui_cell weui_vcode">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="vcode" class="" type="number" placeholder="">
+                    </div>
+                    <div class="weui_cell_ft">
+                        <div>获取</div>
+                    </div>
                 </div>
             </div>
         </div>

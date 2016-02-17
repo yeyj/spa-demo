@@ -87,8 +87,9 @@ define(function (require, exports, module) {
         })();
         //支付密码
         input.onBoxInput({$el:$password});
-        input.onBoxInput({$el:$vcode});
+        input.onBoxInput({$el:$vcode,mask:false});
         $password.on('input:success', function () {
+            $(".bfui_authentication").removeClass('bfui_step1').addClass('bfui_step2');
             softkeyboard.bind($vcode);
         });
         softkeyboard.bind($password);
