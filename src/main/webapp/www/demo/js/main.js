@@ -7,8 +7,46 @@ define(function (require, exports, module) {
     require('zepto');
     var $container = $(".container");
     var _pageStack = [];
-    var animate = function () {
+    var _isGo= false;
+    var init = function(){
+        //var self = this;
+
+        $(window).on('hashchange', function (e) {
+
+            var _isBack = !_isGo;
+            _isGo = false;
+            if (!_isBack) {
+                return;
+            }
+
+            var url = location.hash.indexOf('#') === 0 ? location.hash : '#';
+            var found = null;
+            for(var i = 0, len = _pageStack.length; i < len; i++){
+                var stack = _pageStack[i];
+                if (stack.config.url === url) {
+                    found = stack;
+                    break;
+                }
+            }
+            if (found) {
+                back();
+            }
+            else {
+                //goDefault();
+            }
+        });
+
+        /*function goDefault(){
+            var url = location.hash.indexOf('#') === 0 ? location.hash : '#';
+            var page = self._find('url', url) || self._find('name', self._defaultPage);
+            self.go(page.name);
+        }
+
+        goDefault();*/
+
+        return this;
     };
+    init();
     var goto = function (sectionId, data) {
         console.log('main:goto(' + sectionId + ')');
         if (!sectionId)return;
@@ -19,12 +57,22 @@ define(function (require, exports, module) {
             //page.beforeshow && page.beforeshow(data);
             //page.show && page.show();
             var $h = page.render(data);
-            var transition = $h.data('transition');
-            var $html = $h.addClass(transition || 'slideIn');
+
+            var config={
+                name:sectionId,
+                url: '#' + sectionId,
+                transition:$h.filter('.page').data('transition')||'slideIn'
+            };
+            //var transition = $h.data('transition');
+            var $html = $h.addClass(config.transition);
+
             $container.append($html);
             _pageStack.push({
+                config: config,
                 dom: $html
             });
+            location.hash = '#'+sectionId;
+            _isGo = true;
         });
     };
 

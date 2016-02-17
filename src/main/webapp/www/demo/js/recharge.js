@@ -94,6 +94,9 @@ define(function (require, exports, module) {
         });
         softkeyboard.bind($password);
 
+        $vcode.on('input:success', function () {
+            app.goto('recharge_step2');
+        });
         return this;
     };
     var render = function (data) {
