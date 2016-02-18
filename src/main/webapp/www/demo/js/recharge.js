@@ -33,6 +33,10 @@ define(function (require, exports, module) {
         var $password = $html.find('#pay_password');
         var $vcode = $html.find("#vcode");
         var $keyboard = $html.find('#softkeyboard');
+        var mask = $html.find('#mask');
+        var actionsheet = $html.find('#actionsheet');
+        var btn_as_back = $html.find(".js_bfui_btn_back");
+
         // 金额输入
         var moneyfn = function () {
             if ($money.val() > _quota) {//超限
@@ -51,22 +55,27 @@ define(function (require, exports, module) {
         //下一步
         $btn.tap(function () {
             if ($(this).hasClass('disabled'))return;
-            var mask = $('#mask');
-            var actionsheet = $('#actionsheet');
-            mask.show().one('tap', function () {
-                mask.removeClass('bfui_fade_toggle');
-                actionsheet.removeClass('bfui_actionsheet_toggle');
-                actionsheet.on('transitionend', function () {
-                    mask.hide();
-                }).on('webkitTransitionEnd', function () {
-                    mask.hide();
-                });
-            });
+            mask.show();/*.one('tap', function () {
+                hide_as();
+            });*/
             setTimeout(function () {
-                mask.addClass('bfui_fade_toggle')
+                mask.addClass('bfui_fade_toggle');
             }, 1);
             actionsheet.addClass('bfui_actionsheet_toggle').off('transitionend webkitTransitionEnd');
         });
+
+        btn_as_back.tap(function(){
+            hide_as();
+        });
+        var hide_as = function(){
+            mask.removeClass('bfui_fade_toggle');
+            actionsheet.removeClass('bfui_actionsheet_toggle');
+            actionsheet.on('transitionend', function () {
+                mask.hide();
+            }).on('webkitTransitionEnd', function () {
+                mask.hide();
+            });
+        };
         //软键盘
         var softkeyboard = (function () {
             var $el;
